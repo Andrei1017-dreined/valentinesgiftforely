@@ -1,0 +1,600 @@
+    <!DOCTYPE html>
+    <html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>For My Ella 💕</title>
+        <link rel="preconnect" href="https://fonts.googleapis.com">
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@400;500;600;700&family=Satisfy&family=Nunito:wght@400;600;700&display=swap" rel="stylesheet">
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <!-- Loading Screen -->
+        <div class="loading-screen" id="loading-screen">
+            <div class="loading-content">
+                <div class="loading-heart">💖</div>
+                <h2 class="loading-text">Loading something special...</h2>
+                <p class="loading-subtext">Made with love for my Ella</p>
+                <div class="loading-bar">
+                    <div class="loading-progress"></div>
+                </div>
+                <button class="start-button" id="start-button" style="display: none;">Click to Start 💕</button>
+            </div>
+        </div>
+
+        <!-- Cursor Trail Canvas -->
+        <canvas id="cursor-trail"></canvas>
+
+        <!-- Music Player -->
+        <audio id="background-music" loop>
+            <source src="Taylor Swift - The Alchemy (Official Lyric Video).mp3" type="audio/mpeg">
+        </audio>
+        <div class="music-player" id="music-player">
+            <button class="music-toggle" id="music-toggle" aria-label="Toggle Music">
+                <span class="music-icon">🎵</span>
+                <span class="music-status">Play Music</span>
+            </button>
+        </div>
+
+        <!-- Floating Hearts Background -->
+        <div class="hearts-bg" aria-hidden="true">
+            <span class="heart">💕</span>
+            <span class="heart">🌷</span>
+            <span class="heart">💖</span>
+            <span class="heart">🌷</span>
+            <span class="heart">💗</span>
+            <span class="heart">🌷</span>
+            <span class="heart">💓</span>
+            <span class="heart">🌷</span>
+            <span class="heart">💕</span>
+            <span class="heart">🌷</span>
+        </div>
+
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-particles" id="hero-particles"></div>
+            <div class="hero-content">
+                <div class="heart-burst" id="heart-burst"></div>
+                <h1 class="title animate-fade-in">To My Dearest Ella</h1>
+                <p class="subtitle animate-fade-in-delay">My love, my best friend, my everything 💝</p>
+                <p class="anniversary-badge animate-fade-in-delay">Together since June 29, 2023 🌷</p>
+                <div class="hero-cta animate-fade-in-delay">
+                    <button class="surprise-btn" id="surprise-btn">Click me mahal ❤️</button>
+                </div>
+            </div>
+            <div class="scroll-indicator animate-bounce">
+                <span>↓</span>
+            </div>
+        </header>
+
+        <!-- Love Quotes Carousel -->
+        <section class="quotes-section">
+            <div class="container">
+                <div class="quotes-carousel" id="quotes-carousel">
+                    <div class="quote-card active">
+                        <p class="quote-text">"Even if the world turns against you, my heart will always choose you."</p>
+                        <span class="quote-author"> Wang So, Scarlet Heart E8 💕</span>
+                    </div>
+                    <div class="quote-card">
+                        <p class="quote-text">"I learned what tenderness was only after I met you."</p>
+                        <span class="quote-author"> Wang So, Scarlet Heart E9 🌷</span>
+                    </div>
+                    <div class="quote-card">
+                        <p class="quote-text">"Loving you was never a mistake."</p>
+                        <span class="quote-author"> Hae Soo, Scarlet Heart E10 💖</span>
+                    </div>
+                    <div class="quote-card">
+                        <p class="quote-text">"If fate pulls us apart, my love will still find you."</p>
+                        <span class="quote-author"> Wang So, Scarlet Heart E14 💕</span>
+                    </div>
+                    <div class="quote-card">
+                        <p class="quote-text">"To protect you, I would carry every scar without regret."</p>
+                        <span class="quote-author"> Wang So, Scarlet Heart E16 🌷</span>
+                    </div>
+                </div>
+                <div class="quote-dots" id="quote-dots"></div>
+            </div>
+        </section>
+
+        <!-- Love Letter Section -->
+        <section class="love-letter">
+            <div class="container">
+                <h2 class="section-title">My Dearest Ella</h2>
+                <div class="letter-content" id="love-letter">
+                    <div class="letter-envelope" id="letter-envelope">
+                        <div class="envelope-flap"></div>
+                        <div class="envelope-body">
+                            <span class="envelope-heart">💌</span>
+                            <p>Click to open my letter</p>
+                        </div>
+                    </div>
+                    <div class="letter-paper" id="letter-paper">
+                        <p class="letter-text">My Ella, I still can't believe how I found you. Who would have thought that a random Valorant match would lead me to the love of my life? From the moment we started bonding, I knew there was something special about you. And when we finally met in person, my heart just knew, you were the one.</p>
+                        <p class="letter-text">I know the distance between us isn't always easy. There are days when I wish I could just hold you, see your smile in person, and spend every hour of the day by your side. But even with all this distance between us, my love for you only grows stronger each day that passes. You're worth every wait, every long call, every countdown till we see each other again.</p>
+                        <p class="letter-text">Thank you for everything, mahal. We've been through so much, every laugh, every late night call and bebe time, every game we've played, every tear we've shared, every fight, all of it has made us stronger. You've been my comfort, my happiness, and of course, my home, even when we're miles apart.</p>
+                        <p class="letter-text">I appreciate you more than words, Ella ko. Your patience for waiting for us to meet again, your love, your understanding, you make me want to be the best version of myself. I've always been so grateful that you chose me, that you continue to choose me, and that we're building this beautiful, endless love story together. I love you.</p>
+                        <p class="letter-text signature">
+                            Forever and always yours,<br>
+                            <span class="name">Andrei 💕</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Our Story Section -->
+        <section class="our-story">
+            <div class="container">
+                <h2 class="section-title">Our Love Story</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🎮</div>
+                        <div class="timeline-content">
+                            <h3>We Met on Valorant</h3>
+                            <p>The "Kulang kami isa, sali ka?" that changed our lives forever. Little did we know that one game would lead to something so beautiful.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">💬</div>
+                        <div class="timeline-content">
+                            <h3>Late Night Talks</h3>
+                            <p>From Discord friends to duo queueing in Valorant, late night talks and watching movies through Discord. Every conversation made me fall harder for you.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">💕</div>
+                        <div class="timeline-content">
+                            <h3>June 29, 2023</h3>
+                            <p>The day you officially became my Ella. The best decision of my life was choosing to love you.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🥰</div>
+                        <div class="timeline-content">
+                            <h3>We Met IRL</h3>
+                            <p>The day I finally saw you in person  I was so nervous because I didn't think you'd like the way I looked. But you were so beautiful. Reality was even better than I imagined.</p>
+                        </div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-icon">🌟</div>
+                        <div class="timeline-content">
+                            <h3>Our Forever</h3>
+                            <p>And this is just the beginning. Every day with you is a new page of our never ending book.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Reasons Section -->
+        <section class="reasons">
+            <div class="container">
+                <h2 class="section-title">Things I Adore About You</h2>
+                <div class="reasons-grid">
+                    <div class="reason-card">
+                        <span class="reason-icon">✨</span>
+                        <h3>Your Beautiful Soul</h3>
+                        <p>The way you care, the way you love  your soul is pure. I'm lucky to have someone like you.</p>
+                    </div>
+                    <div class="reason-card">
+                        <span class="reason-icon">🎮</span>
+                        <h3>My Gaming Partner</h3>
+                        <p>Dream duo, dream movie buddies, dream wife. You're the best partner I could ever ask for.</p>
+                    </div>
+                    <div class="reason-card">
+                        <span class="reason-icon">💪</span>
+                        <h3>Your Strength</h3>
+                        <p>You handle our LDR with so much grace. Your patience amazes me every day.</p>
+                    </div>
+                    <div class="reason-card">
+                        <span class="reason-icon">🌷</span>
+                        <h3>Your Everything</h3>
+                        <p>Like your favorite tulips, you bring color and beauty to my life.</p>
+                    </div>
+                    <div class="reason-card">
+                        <span class="reason-icon">😊</span>
+                        <h3>Your Smile</h3>
+                        <p>Damn, I could look at it everyday and never get tired of it. It's the kind of smile that makes all of my problems go away.</p>
+                    </div>
+                    <div class="reason-card">
+                        <span class="reason-icon">💭</span>
+                        <h3>Your Mind</h3>
+                        <p>Your thoughts, your dreams, your ideas  I could listen to you forever.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Photo Gallery Section -->
+        <section class="gallery">
+            <div class="container">
+                <h2 class="section-title">Our Beautiful Memories</h2>
+                <p class="gallery-subtitle">Every picture tells our story, Ella 📸</p>
+                
+                <!-- Slideshow Mode Toggle -->
+                <button class="slideshow-toggle" id="slideshow-toggle">▶️ Start Slideshow</button>
+                
+                <div class="gallery-grid" id="gallery-grid">
+                    <!-- Photo 1 -->
+                    <div class="gallery-item">
+                        <div class="photo-frame">
+                            <img src="1.JPG" alt="Our memory together" class="gallery-img">
+                            <div class="photo-overlay">
+                                <p class="photo-caption">Our first adventure together 💕</p>
+                            </div>
+                        </div>
+                        <p class="photo-message">This was the day I knew you were special... <span class="signature">-Andrei</span></p>
+                    </div>
+
+                    <!-- Photo 2 -->
+                    <div class="gallery-item">
+                        <div class="photo-frame">
+                            <img src="2.JPG" alt="Our memory together" class="gallery-img">
+                            <div class="photo-overlay">
+                                <p class="photo-caption">That perfect moment ✨</p>
+                            </div>
+                        </div>
+                        <p class="photo-message">Your smile makes everything brighter... <span class="signature">-Andrei</span></p>
+                    </div>
+
+                    <!-- Photo 3 -->
+                    <div class="gallery-item">
+                        <div class="photo-frame">
+                            <img src="3.JPG" alt="Our memory together" class="gallery-img">
+                            <div class="photo-overlay">
+                                <p class="photo-caption">Forever grateful 💖</p>
+                            </div>
+                        </div>
+                        <p class="photo-message">One of my favorite memories with you... <span class="signature">-Andrei</span></p>
+                    </div>
+
+                    <!-- Photo 4 -->
+                    <div class="gallery-item">
+                        <div class="photo-frame">
+                            <img src="4.JPG" alt="Our memory together" class="gallery-img">
+                            <div class="photo-overlay">
+                                <p class="photo-caption">My favorite person 🌸</p>
+                            </div>
+                        </div>
+                        <p class="photo-message">I fall more in love every day... <span class="signature">-Andrei</span></p>
+                    </div>
+
+                    <!-- Photo 5 -->
+                    <div class="gallery-item">
+                        <div class="photo-frame landscape">
+                            <img src="5.JPG" alt="Our memory together" class="gallery-img">
+                            <div class="photo-overlay">
+                                <p class="photo-caption">Making memories 💝</p>
+                            </div>
+                        </div>
+                        <p class="photo-message">Every moment is precious with you... <span class="signature">-Andrei</span></p>
+                    </div>
+
+                    <!-- Photo 6 -->
+                    <div class="gallery-item">
+                        <div class="photo-frame">
+                            <img src="6.JPG" alt="Our memory together" class="gallery-img">
+                            <div class="photo-overlay">
+                                <p class="photo-caption">Always and forever 💕</p>
+                            </div>
+                        </div>
+                        <p class="photo-message">Here's to many more adventures together... <span class="signature">-Andrei</span></p>
+                    </div>
+                </div>
+                
+                <!-- Fullscreen Slideshow -->
+                <div class="slideshow-fullscreen" id="slideshow-fullscreen">
+                    <button class="slideshow-close" id="slideshow-close">×</button>
+                    <button class="slideshow-nav slideshow-prev" id="slideshow-prev">❮</button>
+                    <button class="slideshow-nav slideshow-next" id="slideshow-next">❯</button>
+                    <div class="slideshow-content">
+                        <img src="" alt="" class="slideshow-img" id="slideshow-img">
+                        <p class="slideshow-caption" id="slideshow-caption"></p>
+                        <p class="slideshow-message" id="slideshow-message"></p>
+                    </div>
+                    <div class="slideshow-progress">
+                        <div class="slideshow-progress-bar" id="slideshow-progress-bar"></div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Starry Night / Constellation Section -->
+        <section class="starry-night" id="starry-night">
+            <canvas id="stars-canvas"></canvas>
+            <div class="constellation-message">
+                <h2 class="constellation-title">Written in the Stars</h2>
+                
+                <!-- Star Facts Carousel with Arrows -->
+                <div class="star-facts-wrapper">
+                    <button class="star-nav star-prev" id="star-prev">❮</button>
+                    <div class="star-facts-carousel" id="star-facts-carousel">
+                        <div class="star-fact active">
+                            <p class="constellation-text">They say true love is written in the stars...</p>
+                            <p class="constellation-text">Look up, Ella, the universe knows we belong together.</p>
+                        </div>
+                        <div class="star-fact">
+                            <p class="star-sign">♈ Aries + ♉ Taurus</p>
+                            <p class="constellation-text">Andrei (April 17) is Aries, Eliza (April 22) is Taurus. Fire meets Earth. 🔥🌍</p>
+                        </div>
+                        <div class="star-fact">
+                            <p class="star-sign">💕 Perfect Match</p>
+                            <p class="constellation-text">Aries brings excitement, Taurus brings stability. Together, we balance perfectly.</p>
+                        </div>
+                        <div class="star-fact">
+                            <p class="star-sign">⭐ Fun Fact</p>
+                            <p class="constellation-text">Aries is ruled by Mars, Taurus by Venus. Passion and love, meant to be!</p>
+                        </div>
+                        <div class="star-fact">
+                            <p class="star-sign">🌙 Cosmic Connection</p>
+                            <p class="constellation-text">Both April babies, only 5 days apart. The stars aligned for us. 💫</p>
+                        </div>
+                    </div>
+                    <button class="star-nav star-next" id="star-next">❯</button>
+                </div>
+                
+                <div class="our-names">
+                    <span class="star-name">Eliza</span>
+                    <span class="star-heart">💫</span>
+                    <span class="star-name">&</span>
+                    <span class="star-heart">💫</span>
+                    <span class="star-name">Andrei</span>
+                </div>
+                <p class="constellation-text small">Click anywhere to create a shooting star ⭐</p>
+            </div>
+        </section>
+
+        <!-- Tulip Garden Section -->
+        <section class="tulip-garden" id="tulip-garden">
+            <div class="garden-sky">
+                <div class="sun"></div>
+                <div class="cloud cloud-1"></div>
+                <div class="cloud cloud-2"></div>
+                <div class="cloud cloud-3"></div>
+                <div class="butterflies" id="butterflies"></div>
+            </div>
+            
+            <div class="garden-content">
+                <h2 class="tulip-title">A Garden of Tulips for My Ella 🌷</h2>
+                <p class="tulip-subtitle">Click anywhere in the garden to plant a tulip for you</p>
+            </div>
+            
+            <div class="tulip-field-container">
+                <!-- Background grass layers -->
+                <div class="grass-layer grass-back"></div>
+                <div class="grass-layer grass-mid"></div>
+                <div class="grass-layer grass-front"></div>
+                
+                <!-- Main tulip field -->
+                <div class="tulip-field" id="tulip-field">
+                    <!-- Row 1 - Back -->
+                    <div class="tulip-row row-back">
+                        <div class="tulip-3d" style="--hue: 340; --delay: 0.1s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 350; --delay: 0.3s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 320; --delay: 0.2s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 0; --delay: 0.4s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 330; --delay: 0.15s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 345; --delay: 0.35s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 355; --delay: 0.25s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 335; --delay: 0.45s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 315; --delay: 0.1s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 5; --delay: 0.5s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                    </div>
+                    
+                    <!-- Row 2 - Mid Back -->
+                    <div class="tulip-row row-mid-back">
+                        <div class="tulip-3d" style="--hue: 350; --delay: 0.2s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 330; --delay: 0.4s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 345; --delay: 0.1s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 355; --delay: 0.3s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 340; --delay: 0.5s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 320; --delay: 0.15s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 0; --delay: 0.35s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 335; --delay: 0.25s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 315; --delay: 0.45s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 350; --delay: 0.05s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 5; --delay: 0.55s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                    </div>
+                    
+                    <!-- Row 3 - Middle -->
+                    <div class="tulip-row row-mid">
+                        <div class="tulip-3d" style="--hue: 340; --delay: 0.3s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 355; --delay: 0.1s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 325; --delay: 0.5s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 345; --delay: 0.2s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 335; --delay: 0.4s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 350; --delay: 0.15s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 0; --delay: 0.35s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 320; --delay: 0.25s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 340; --delay: 0.45s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 355; --delay: 0.05s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 330; --delay: 0.55s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 345; --delay: 0.6s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                    </div>
+                    
+                    <!-- Row 4 - Mid Front -->
+                    <div class="tulip-row row-mid-front">
+                        <div class="tulip-3d" style="--hue: 330; --delay: 0.4s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 350; --delay: 0.2s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 345; --delay: 0.5s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 335; --delay: 0.1s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 355; --delay: 0.3s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 340; --delay: 0.45s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 325; --delay: 0.15s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 0; --delay: 0.35s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 350; --delay: 0.55s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 320; --delay: 0.25s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 345; --delay: 0.6s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 335; --delay: 0.08s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 355; --delay: 0.65s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                    </div>
+                    
+                    <!-- Row 5 - Front -->
+                    <div class="tulip-row row-front">
+                        <div class="tulip-3d" style="--hue: 345; --delay: 0.5s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 335; --delay: 0.3s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 355; --delay: 0.1s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 340; --delay: 0.4s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 350; --delay: 0.2s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 325; --delay: 0.45s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 0; --delay: 0.15s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 345; --delay: 0.35s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 330; --delay: 0.55s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 355; --delay: 0.25s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 340; --delay: 0.6s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 320; --delay: 0.08s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 350; --delay: 0.65s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                        <div class="tulip-3d" style="--hue: 335; --delay: 0.7s;"><div class="tulip-stem"></div><div class="tulip-leaves"></div><div class="tulip-bloom"></div></div>
+                    </div>
+                </div>
+                
+                <!-- Petals falling -->
+                <div class="falling-petals" id="falling-petals"></div>
+            </div>
+            
+            <div class="garden-message">
+                <div class="message-card">
+                    <p class="garden-text">Just like these tulips bloom beautifully with the right care and love, so does my love for you grow stronger every single day, my Ella.</p>
+                    <p class="garden-text">Each flower in this garden represents a moment I've cherished with you, a memory we've made, a dream we share.</p>
+                    <p class="garden-text highlight">You deserve all the tulips in the world. 🌷</p>
+                    <div class="planted-counter">
+                        <span id="tulip-counter">0</span> tulips planted with love 💕
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Ocean Depth of Love Section -->
+        <section class="ocean-section" id="ocean-section">
+            <div class="ocean-surface">
+                <div class="wave wave1"></div>
+                <div class="wave wave2"></div>
+                <div class="wave wave3"></div>
+                <div class="wave wave4"></div>
+            </div>
+            <canvas id="ocean-canvas"></canvas>
+            <div class="ocean-content">
+                <h2 class="ocean-title">The Depth of My Love 🌊</h2>
+                <div class="ocean-message">
+                    <p class="ocean-text fade-in">No matter how big or little our struggles may be...</p>
+                    <p class="ocean-text highlight pulse">They're no match to how deep my love is for you.</p>
+                    <p class="ocean-text fade-in">Our love will always outweigh our struggles, Ella.</p>
+                    <p class="ocean-text small glow">Even deeper than the Mariana Trench 🌊💖</p>
+                </div>
+                <div class="heart-anchor">⚓💕</div>
+            </div>
+            <div class="ocean-bubbles" id="ocean-bubbles"></div>
+            <div class="ocean-fish">
+                <span class="fish fish1">🐠</span>
+                <span class="fish fish2">🐟</span>
+                <span class="fish fish3">🐡</span>
+                <span class="fish fish4">🦈</span>
+                <span class="fish fish5">🐙</span>
+                <span class="fish fish6">🦑</span>
+                <span class="fish fish7">🐬</span>
+                <span class="fish fish8">🐳</span>
+            </div>
+            <div class="ocean-floor">
+                <span class="coral coral1">🪸</span>
+                <span class="coral coral2">🪸</span>
+                <span class="coral coral3">🌿</span>
+                <span class="coral coral4">🪸</span>
+                <span class="seashell shell1">🐚</span>
+                <span class="seashell shell2">🐚</span>
+                <span class="starfish">⭐</span>
+            </div>
+        </section>
+
+        <!-- Promises / Wishes Section -->
+        <section class="promises-section">
+            <div class="container">
+                <h2 class="section-title">My Promises to You</h2>
+                <div class="promises-container">
+                    <div class="promise-card" data-promise="1">
+                        <div class="promise-icon">🤝</div>
+                        <h3>I Promise</h3>
+                        <p>To always be your best friend, your partner in crime, and your biggest supporter.</p>
+                    </div>
+                    <div class="promise-card" data-promise="2">
+                        <div class="promise-icon">🛡️</div>
+                        <h3>I Promise</h3>
+                        <p>To protect your heart and cherish your love like the precious gift it is.</p>
+                    </div>
+                    <div class="promise-card" data-promise="3">
+                        <div class="promise-icon">🎮</div>
+                        <h3>I Promise</h3>
+                        <p>To be your partner in everything  in Valorant and in life. Partners forever.</p>
+                    </div>
+                    <div class="promise-card" data-promise="4">
+                        <div class="promise-icon">🌙</div>
+                        <h3>I Promise</h3>
+                        <p>To stay up late talking with you, no matter how tired I am, because your voice is my favorite sound.</p>
+                    </div>
+                    <div class="promise-card" data-promise="5">
+                        <div class="promise-icon">✈️</div>
+                        <h3>I Promise</h3>
+                        <p>To close the distance between us  I promise to change the distance between us someday.</p>
+                    </div>
+                    <div class="promise-card" data-promise="6">
+                        <div class="promise-icon">💍</div>
+                        <h3>I Promise</h3>
+                        <p>To love you more with each passing day, and to one day make all our dreams come true together.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Final Message Section -->
+        <section class="final-message">
+            <div class="container">
+                <div class="message-box">
+                    <h2 class="final-title">I Love You, My Ella</h2>
+                    <p class="final-text">
+                        From Valorant to real life, from Batangas to Bulacan, from city girl to probinsyano  no distance could ever change how I love you. You are my today and all of my tomorrows.
+                    </p>
+                    <p class="final-text">
+                        Thank you for being mine. Thank you for loving me despite the distance and shortcomings. Thank you for making my everyday worth looking forward to.
+                    </p>
+                    <p class="final-text ldr-text">
+                        🌷 Batangas ← 💕 → Bulacan 🌷<br>
+                        <span class="distance-note">Distance means nothing when someone means everything</span>
+                    </p>
+                    <div class="heart-animation" id="main-heart">
+                        <span class="big-heart">💖</span>
+                    </div>
+                    <p class="anniversary-counter" id="anniversary-counter"></p>
+                    
+                    <!-- Secret Easter Egg -->
+                    <div class="secret-message" id="secret-message">
+                        <p>🎉 You found a secret! 🎉</p>
+                        <p>Click the heart 10 times for a surprise!</p>
+                        <div class="click-counter">Clicks: <span id="heart-clicks">0</span>/10</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Footer -->
+        <footer class="footer">
+            <p>Coded with love for you, mahal ko 💕</p>
+            <p class="date">Since June 29, 2023 🌷</p>
+            <p class="easter-egg-hint" id="easter-egg-hint">Psst... try clicking on different things 😉</p>
+        </footer>
+
+        <!-- Lightbox Modal -->
+        <div class="lightbox" id="lightbox">
+            <button class="lightbox-close" aria-label="Close">&times;</button>
+            <img src="" alt="" class="lightbox-img" id="lightbox-img">
+            <p class="lightbox-caption" id="lightbox-caption"></p>
+        </div>
+
+        <!-- Confetti Canvas -->
+        <canvas id="confetti-canvas"></canvas>
+
+        <!-- Fireworks Canvas -->
+        <canvas id="fireworks-canvas"></canvas>
+
+        <script src="script.js"></script>
+    </body>
+    </html>

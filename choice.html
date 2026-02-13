@@ -1,0 +1,586 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Choose Your Experience</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;0,700;1,300;1,400&family=Montserrat:wght@200;300;400;500;600;700&family=Quicksand:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+:root {
+    --bg: #0a0610;
+    --rose: #e84393;
+    --rose-dim: rgba(232,67,147,0.12);
+    --violet: #a29bfe;
+    --violet-dim: rgba(162,155,254,0.1);
+    --gold: #f9ca24;
+    --white: #f0f0f0;
+    --dim: #777;
+    --font-display: 'Cormorant Garamond', serif;
+    --font-heading: 'Montserrat', sans-serif;
+    --font-body: 'Quicksand', sans-serif;
+    --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    --ease-smooth: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+*, *::before, *::after { margin:0; padding:0; box-sizing:border-box; }
+html { scroll-behavior: smooth; }
+body {
+    font-family: var(--font-body); background: var(--bg);
+    color: var(--white); overflow-x: hidden; min-height: 100vh;
+}
+
+/* ====== CANVAS ====== */
+#bg-canvas {
+    position: fixed; inset: 0; width: 100%; height: 100%;
+    z-index: 0; pointer-events: none;
+}
+
+/* ====== GLOW BLOBS ====== */
+.glow-blobs {
+    position: fixed; inset: 0; z-index: 0; pointer-events: none; overflow: hidden;
+}
+.glow-blob {
+    position: absolute; border-radius: 50%; filter: blur(100px); opacity: 0.08;
+    animation: blobFloat 20s ease-in-out infinite alternate;
+}
+.glow-blob:nth-child(1) { width:500px; height:500px; background:var(--rose); top:-10%; left:10%; }
+.glow-blob:nth-child(2) { width:400px; height:400px; background:var(--violet); bottom:-10%; right:5%; animation-delay:-8s; }
+.glow-blob:nth-child(3) { width:300px; height:300px; background:var(--gold); top:50%; left:50%; opacity:0.04; animation-delay:-15s; }
+@keyframes blobFloat {
+    0% { transform: translate(0,0) scale(1); }
+    50% { transform: translate(30px,-40px) scale(1.05); }
+    100% { transform: translate(-20px,20px) scale(0.95); }
+}
+
+/* ====== MAIN LAYOUT ====== */
+.page {
+    position: relative; z-index: 1;
+    min-height: 100vh;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 40px 20px;
+}
+
+/* Header */
+.page-header {
+    text-align: center; margin-bottom: 60px;
+}
+.page-icon {
+    width: 56px; height: 56px; margin: 0 auto 24px;
+    animation: heartPulse 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 15px rgba(232,67,147,0.4));
+}
+@keyframes heartPulse {
+    0%,100%{transform:scale(1)} 15%{transform:scale(1.12)} 30%{transform:scale(1)} 45%{transform:scale(1.08)} 60%{transform:scale(1)}
+}
+.page-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.6rem, 4vw, 2.8rem);
+    font-weight: 300; letter-spacing: 0.04em;
+    margin-bottom: 10px;
+    opacity: 0; transform: translateY(20px);
+    animation: fadeUp 0.8s var(--ease) 0.2s forwards;
+}
+.page-subtitle {
+    font-family: var(--font-body);
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    font-weight: 300; color: var(--dim);
+    opacity: 0; transform: translateY(15px);
+    animation: fadeUp 0.8s var(--ease) 0.5s forwards;
+}
+@keyframes fadeUp { to { opacity:1; transform:translateY(0); } }
+
+/* ====== CARDS CONTAINER ====== */
+.cards {
+    display: flex; gap: 30px;
+    align-items: stretch; justify-content: center;
+    flex-wrap: wrap;
+    max-width: 1100px; width: 100%;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease) 0.8s forwards;
+}
+
+/* ====== CARD ====== */
+.card {
+    flex: 1; min-width: 320px; max-width: 500px;
+    border-radius: 20px;
+    overflow: hidden;
+    background: rgba(255,255,255,0.025);
+    border: 1px solid rgba(255,255,255,0.06);
+    cursor: pointer;
+    transition: all 0.5s var(--ease);
+    position: relative;
+    text-decoration: none; color: inherit;
+    display: flex; flex-direction: column;
+}
+.card:hover {
+    transform: translateY(-8px) scale(1.02);
+    border-color: rgba(255,255,255,0.12);
+}
+
+/* Card glow on hover */
+.card::before {
+    content: '';
+    position: absolute; inset: -1px;
+    border-radius: 21px;
+    opacity: 0;
+    transition: opacity 0.5s;
+    z-index: -1;
+}
+.card:hover::before { opacity: 1; }
+
+/* Left card (old site) glow */
+.card-old::before { background: linear-gradient(135deg, var(--violet-dim), transparent); box-shadow: 0 20px 60px var(--violet-dim); }
+.card-old:hover { border-color: rgba(162,155,254,0.2); box-shadow: 0 20px 60px var(--violet-dim); }
+
+/* Right card (new site) glow */
+.card-new::before { background: linear-gradient(135deg, var(--rose-dim), transparent); box-shadow: 0 20px 60px var(--rose-dim); }
+.card-new:hover { border-color: rgba(232,67,147,0.2); box-shadow: 0 20px 60px var(--rose-dim); }
+
+/* ====== CARD PREVIEW (snapshot area) ====== */
+.card-preview {
+    width: 100%;
+    height: 280px;
+    overflow: hidden;
+    position: relative;
+    background: rgba(0,0,0,0.3);
+    border-bottom: 1px solid rgba(255,255,255,0.04);
+}
+.card-preview iframe {
+    width: 200%; height: 200%;
+    transform: scale(0.5);
+    transform-origin: top left;
+    border: none;
+    pointer-events: none;
+}
+/* Gradient overlay on preview */
+.card-preview::after {
+    content: '';
+    position: absolute; inset: 0;
+    background: linear-gradient(180deg, transparent 30%, rgba(10,6,16,0.8) 100%);
+    pointer-events: all;
+}
+
+/* Fallback preview */
+.card-preview-fallback {
+    width: 100%; height: 100%;
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    padding: 20px; text-align: center;
+    background: linear-gradient(135deg, rgba(255,255,255,0.02), rgba(255,255,255,0.04));
+}
+.card-preview-fallback svg {
+    width: 48px; height: 48px; margin-bottom: 12px; opacity: 0.15;
+}
+
+/* ====== CARD BODY ====== */
+.card-body {
+    padding: 28px 28px 32px;
+    flex: 1;
+    display: flex; flex-direction: column;
+}
+
+/* Label badge */
+.card-label {
+    font-family: var(--font-heading);
+    font-size: 0.6rem; font-weight: 600;
+    letter-spacing: 0.3em; text-transform: uppercase;
+    padding: 5px 14px; border-radius: 20px;
+    display: inline-flex; align-items: center;
+    width: fit-content;
+    margin-bottom: 16px;
+}
+.card-old .card-label {
+    background: var(--violet-dim);
+    color: var(--violet);
+    border: 1px solid rgba(162,155,254,0.15);
+}
+.card-new .card-label {
+    background: var(--rose-dim);
+    color: var(--rose);
+    border: 1px solid rgba(232,67,147,0.15);
+}
+/* Pulsing dot on new card */
+.card-new .card-label::before {
+    content: '';
+    display: inline-block;
+    width: 6px; height: 6px;
+    border-radius: 50%;
+    background: var(--rose);
+    margin-right: 8px;
+    animation: newDot 1.5s ease-in-out infinite;
+}
+@keyframes newDot { 0%,100%{opacity:1;transform:scale(1)} 50%{opacity:0.4;transform:scale(0.7)} }
+
+.card-title {
+    font-family: var(--font-display);
+    font-size: clamp(1.4rem, 3vw, 1.9rem);
+    font-weight: 400; line-height: 1.3;
+    margin-bottom: 10px;
+}
+.card-desc {
+    font-size: 0.85rem; font-weight: 300;
+    color: var(--dim); line-height: 1.6;
+    margin-bottom: 24px; flex: 1;
+}
+
+/* Feature tags */
+/* CTA inside card */
+.card-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    padding: 13px 28px;
+    font-family: var(--font-heading);
+    font-size: 0.75rem; font-weight: 500;
+    letter-spacing: 0.12em; text-transform: uppercase;
+    border: none; border-radius: 50px;
+    cursor: pointer;
+    transition: all 0.35s var(--ease-smooth);
+    text-decoration: none;
+    width: fit-content;
+}
+.card-old .card-cta {
+    background: transparent;
+    border: 1px solid rgba(162,155,254,0.25);
+    color: var(--violet);
+}
+.card-old .card-cta:hover {
+    background: rgba(162,155,254,0.1);
+    box-shadow: 0 8px 25px var(--violet-dim);
+    transform: translateY(-2px);
+}
+.card-new .card-cta {
+    background: linear-gradient(135deg, var(--rose), #c0245a);
+    color: #fff; border: none;
+    box-shadow: 0 6px 20px rgba(232,67,147,0.25);
+    position: relative; overflow: hidden;
+}
+.card-new .card-cta::before {
+    content:''; position:absolute; inset:0;
+    background: linear-gradient(135deg, transparent 30%, rgba(255,255,255,0.15) 50%, transparent 70%);
+    transform: translateX(-100%); transition: transform 0.5s;
+}
+.card-new .card-cta:hover::before { transform: translateX(100%); }
+.card-new .card-cta:hover {
+    box-shadow: 0 12px 35px rgba(232,67,147,0.35);
+    transform: translateY(-2px);
+}
+.cta-arrow {
+    display: inline-block;
+    transition: transform 0.3s var(--ease-smooth);
+}
+.card:hover .cta-arrow { transform: translateX(4px); }
+
+/* ====== DIVIDER ====== */
+.cards-divider {
+    display: flex; flex-direction: column;
+    align-items: center; justify-content: center;
+    gap: 0;
+}
+.cards-divider-line {
+    width: 1px; height: 140px;
+    background: linear-gradient(180deg, transparent, rgba(255,255,255,0.08), transparent);
+    position: relative;
+}
+.cards-divider-dot {
+    width: 8px; height: 8px; border-radius: 50%;
+    background: rgba(255,255,255,0.12);
+    position: absolute; top: 50%; left: 50%;
+    transform: translate(-50%, -50%);
+    animation: divDot 3s ease-in-out infinite;
+}
+@keyframes divDot { 0%,100%{opacity:0.2;transform:translate(-50%,-50%) scale(1)} 50%{opacity:0.6;transform:translate(-50%,-50%) scale(1.5)} }
+.or-text {
+    font-family: var(--font-display);
+    font-size: 1rem; font-style: italic;
+    color: rgba(255,255,255,0.15);
+    padding: 10px 0;
+}
+
+/* ====== FOOTER ====== */
+.page-footer {
+    margin-top: 50px; text-align: center;
+    opacity: 0;
+    animation: fadeUp 0.8s var(--ease) 1.2s forwards;
+}
+.page-footer p {
+    font-size: 0.75rem; color: rgba(255,255,255,0.2); font-weight: 300;
+}
+
+/* ====== RESPONSIVE ====== */
+@media (max-width: 768px) {
+    .cards { flex-direction: column; align-items: center; }
+    .card { min-width: 0; max-width: 420px; width: 100%; }
+    .cards-divider-line { display: none; }
+    .or-text { padding: 4px 0; }
+    .page-header { margin-bottom: 36px; }
+    .card-preview { height: 220px; }
+}
+@media (max-width: 480px) {
+    .page { padding: 24px 16px; }
+    .card-body { padding: 22px 20px 26px; }
+}
+    </style>
+</head>
+<body>
+
+<!-- Background Canvas -->
+<canvas id="bg-canvas"></canvas>
+
+<!-- Glow Blobs -->
+<div class="glow-blobs">
+    <div class="glow-blob"></div>
+    <div class="glow-blob"></div>
+    <div class="glow-blob"></div>
+</div>
+
+<!-- ====== MAIN PAGE ====== -->
+<div class="page">
+
+    <!-- Header -->
+    <header class="page-header">
+        <!-- SVG Heart icon (coded shape, no emoji) -->
+        <svg class="page-icon" viewBox="0 0 100 90" xmlns="http://www.w3.org/2000/svg">
+            <defs>
+                <linearGradient id="hg" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" style="stop-color:#ff6b9d"/>
+                    <stop offset="100%" style="stop-color:#e84393"/>
+                </linearGradient>
+            </defs>
+            <path d="M50 88C25 65 0 45 0 28 0 10 15 0 28 0c10 0 18 6 22 15 4-9 12-15 22-15 13 0 28 10 28 28 0 17-25 37-50 60z" fill="url(#hg)"/>
+        </svg>
+
+        <h1 class="page-title">Choose Your Experience, Ella</h1>
+        <p class="page-subtitle">HAPPY VALENTINESS BABYYYY</p>
+    </header>
+
+    <!-- ====== CARDS ====== -->
+    <div class="cards">
+
+        <!-- ========================
+             LEFT CARD: OLD WEBSITE
+             Links to classic.html
+             ======================== -->
+        <a href="classic.html" class="card card-old" id="card-old">
+            <div class="card-preview" id="preview-old">
+                <!-- Live iframe preview of old site (scaled down snapshot) -->
+                <iframe src="classic.html" title="Original site preview" loading="lazy" sandbox="allow-same-origin" tabindex="-1"></iframe>
+            </div>
+            <div class="card-body">
+                <span class="card-label">Classic</span>
+                <h2 class="card-title">The Original Experience</h2>
+                <p class="card-desc">
+                    Everything I've poured my heart into for you, all in one place.
+                </p>
+                <span class="card-cta">
+                    Open Classic
+                    <span class="cta-arrow">&rarr;</span>
+                </span>
+            </div>
+        </a>
+
+        <!-- Divider -->
+        <div class="cards-divider">
+            <div class="cards-divider-line">
+                <div class="cards-divider-dot"></div>
+            </div>
+            <span class="or-text">or</span>
+            <div class="cards-divider-line">
+                <div class="cards-divider-dot"></div>
+            </div>
+        </div>
+
+        <!-- ========================
+             RIGHT CARD: NEW VALENTINE WEBSITE
+             Links to valentine.html
+             ======================== -->
+        <a href="valentine.html" class="card card-new" id="card-new">
+            <div class="card-preview" id="preview-new">
+                <!-- Live iframe preview of new Valentine site (scaled down snapshot) -->
+                <iframe src="valentine.html" title="Valentine experience preview" loading="lazy" sandbox="allow-same-origin" tabindex="-1"></iframe>
+            </div>
+            <div class="card-body">
+                <span class="card-label">Valentine Special</span>
+                <h2 class="card-title">Something New For You</h2>
+                <p class="card-desc">
+                    I built this just to say happy Valentine's day with a playful twist.
+                    A question, an interactive carousel, and a gift coded with all my love.
+                </p>
+                <span class="card-cta">
+                    Open Valentine
+                    <span class="cta-arrow">&rarr;</span>
+                </span>
+            </div>
+        </a>
+
+    </div>
+
+    <!-- Footer -->
+    <footer class="page-footer">
+        <p>Made with love for Ella</p>
+    </footer>
+
+</div>
+
+<!-- ============================================================
+     JAVASCRIPT
+     ============================================================ -->
+<script>
+(function() {
+    'use strict';
+
+    const rand = (a, b) => Math.random() * (b - a) + a;
+
+    /* ==========================================================
+       BACKGROUND PARTICLES + FLOATING HEARTS
+       ========================================================== */
+    function initCanvas() {
+        const canvas = document.getElementById('bg-canvas');
+        if (!canvas) return;
+        const ctx = canvas.getContext('2d');
+        let w, h;
+        let mouseX = 0.5, mouseY = 0.5;
+
+        function resize() {
+            w = canvas.width = window.innerWidth;
+            h = canvas.height = window.innerHeight;
+        }
+        resize();
+        window.addEventListener('resize', resize);
+        window.addEventListener('mousemove', e => {
+            mouseX = e.clientX / w;
+            mouseY = e.clientY / h;
+        }, { passive: true });
+
+        /* Particles */
+        const particles = [];
+        for (let i = 0; i < 50; i++) {
+            particles.push({
+                x: rand(0,w), y: rand(0,h),
+                r: rand(1, 2),
+                dx: rand(-0.1, 0.1), dy: rand(-0.06, 0.06),
+                o: rand(0.02, 0.05),
+                pulse: rand(0, Math.PI*2), ps: rand(0.008, 0.015)
+            });
+        }
+
+        /* Floating hearts */
+        const hearts = [];
+        for (let i = 0; i < 24; i++) {
+            hearts.push({
+                x: rand(0,w), y: rand(0,h),
+                size: rand(5,16),
+                dy: rand(-0.28,-0.06),
+                dx: rand(-0.18, 0.18),
+                rot: rand(0, Math.PI*2),
+                rs: rand(-0.008, 0.008),
+                o: rand(0.02, 0.1),
+                depth: rand(0.25, 1.1),
+                pulse: rand(0, Math.PI * 2),
+                ps: rand(0.006, 0.02),
+                trail: []
+            });
+        }
+
+        function drawHeart(cx, cy, size, rotation, alpha, glow) {
+            ctx.save();
+            ctx.translate(cx, cy);
+            ctx.rotate(rotation);
+            ctx.scale(size/50, size/50);
+            ctx.globalAlpha = alpha;
+            ctx.shadowBlur = glow;
+            ctx.shadowColor = '#ff6b9d';
+            ctx.beginPath();
+            ctx.moveTo(0, -8);
+            ctx.bezierCurveTo(-25,-40,-50,-5, 0, 30);
+            ctx.moveTo(0, -8);
+            ctx.bezierCurveTo(25,-40, 50,-5, 0, 30);
+            const grad = ctx.createLinearGradient(-35, -25, 35, 30);
+            grad.addColorStop(0, '#ff8fb8');
+            grad.addColorStop(0.5, '#ff6b9d');
+            grad.addColorStop(1, '#d63384');
+            ctx.fillStyle = grad;
+            ctx.fill();
+            ctx.restore();
+            ctx.globalAlpha = 1;
+            ctx.shadowBlur = 0;
+        }
+
+        function loop() {
+            ctx.clearRect(0, 0, w, h);
+
+            for (const p of particles) {
+                p.x += p.dx; p.y += p.dy; p.pulse += p.ps;
+                if (p.x < -5) p.x = w+5;
+                if (p.x > w+5) p.x = -5;
+                if (p.y < -5) p.y = h+5;
+                if (p.y > h+5) p.y = -5;
+                const a = p.o + Math.sin(p.pulse)*0.015;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI*2);
+                ctx.fillStyle = `rgba(255,255,255,${a})`;
+                ctx.fill();
+            }
+
+            for (const hr of hearts) {
+                hr.pulse += hr.ps;
+                const driftX = (mouseX - 0.5) * 16 * hr.depth;
+                const driftY = (mouseY - 0.5) * 10 * hr.depth;
+                hr.y += hr.dy * hr.depth;
+                hr.x += hr.dx * hr.depth;
+                hr.rot += hr.rs;
+
+                if (hr.y < -30) { hr.y = h + 30; hr.x = rand(0,w); }
+                if (hr.x < -20) hr.x = w + 20;
+                if (hr.x > w + 20) hr.x = -20;
+
+                hr.trail.push({ x: hr.x + driftX, y: hr.y + driftY, a: hr.o * 0.45 });
+                if (hr.trail.length > 5) hr.trail.shift();
+
+                for (let i = 0; i < hr.trail.length; i++) {
+                    const tr = hr.trail[i];
+                    const ta = (i + 1) / hr.trail.length;
+                    drawHeart(tr.x, tr.y, hr.size * (0.55 + ta * 0.3), hr.rot, tr.a * ta * 0.35, 0);
+                }
+
+                const beat = 1 + Math.sin(hr.pulse) * 0.12;
+                const size = hr.size * beat;
+                const alpha = hr.o * (0.8 + Math.sin(hr.pulse * 1.4) * 0.2);
+                const glow = 8 + hr.depth * 14;
+                drawHeart(hr.x + driftX, hr.y + driftY, size, hr.rot, alpha, glow);
+            }
+
+            requestAnimationFrame(loop);
+        }
+        requestAnimationFrame(loop);
+    }
+
+    /* ==========================================================
+       CARD 3D TILT ON HOVER
+       ========================================================== */
+    function initCardTilt() {
+        document.querySelectorAll('.card').forEach(card => {
+            card.addEventListener('mousemove', e => {
+                const rect = card.getBoundingClientRect();
+                const x = (e.clientX - rect.left) / rect.width - 0.5;
+                const y = (e.clientY - rect.top) / rect.height - 0.5;
+                card.style.transform = `translateY(-8px) scale(1.02) perspective(800px) rotateX(${y*-4}deg) rotateY(${x*4}deg)`;
+            });
+            card.addEventListener('mouseleave', () => {
+                card.style.transform = '';
+            });
+        });
+    }
+
+    /* ==========================================================
+       INIT
+       ========================================================== */
+    document.addEventListener('DOMContentLoaded', () => {
+        initCanvas();
+        initCardTilt();
+    });
+
+})();
+</script>
+</body>
+</html>
